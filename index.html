@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA na Escola | Tecnologia com Consciência</title>
+
+<style>
+:root {
+--navy: #071b3a;
+--blue: #0b3d78;
+--blue2: #1264b5;
+--cyan: #43c6e8;
+--ice: #eaf5ff;
+--white: #ffffff;
+--text: #18324f;
+--muted: #60758d;
+--line: #d8e8f7;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: "Segoe UI", Arial, sans-serif;
+color: var(--text);
+background: #f5f9fe;
+line-height: 1.6;
+}
+
+a {
+text-decoration: none;
+color: inherit;
+}
+
+/* MENU */
+.topbar {
+position: sticky;
+top: 0;
+z-index: 10;
+background: rgba(7,27,58,.97);
+}
+
+.nav {
+max-width: 1160px;
+margin: auto;
+padding: 15px 24px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.brand {
+color: white;
+font-weight: 800;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.brand-mark {
+width: 38px;
+height: 38px;
+border-radius: 12px;
+display: grid;
+place-items: center;
+background: var(--cyan);
+color: var(--navy);
+font-size: 20px;
+}
+
+.nav-links {
+display: flex;
+gap: 24px;
+color: #dcecff;
+font-size: 13px;
+font-weight: bold;
+}
+
+.nav-links a:hover {
+color: var(--cyan);
+}
+
+/* INÍCIO */
+.hero {
+color: white;
+background:
+radial-gradient(circle at 82% 20%, rgba(67,198,232,.22), transparent 28%),
+linear-gradient(125deg,#071b3a,#0b3d78,#1264b5);
+}
+
+.hero-inner {
+max-width: 1160px;
+margin: auto;
+padding: 88px 24px 96px;
+display: grid;
+grid-template-columns: 1.2fr .8fr;
+align-items: center;
+gap: 48px;
+}
+
+.eyebrow {
+color: #a9eaff;
+background: rgba(67,198,232,.12);
+border: 1px solid rgba(169,234,255,.25);
+border-radius: 99px;
+padding: 7px 13px;
+font-size: 12px;
+font-weight: bold;
+}
+
+h1 {
+font-size: clamp(38px,5vw,62px);
+line-height: 1.08;
+margin: 22px 0 18px;
+}
+
+h1 span {
+color: var(--cyan);
+}
+
+.hero p {
+max-width: 610px;
+color: #d8eaff;
+font-size: 17px;
+}
+
+.hero-actions {
+display: flex;
+gap: 13px;
+flex-wrap: wrap;
+margin-top: 30px;
+}
+
+.btn {
+padding: 12px 19px;
+border-radius: 11px;
+font-weight: bold;
+border: none;
+cursor: pointer;
+}
+
+.btn-primary {
+background: var(--cyan);
+color: var(--navy);
+}
+
+.btn-outline {
+color: white;
+border: 1px solid rgba(255,255,255,.35);
+background: transparent;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+}
+
+/* ILUSTRAÇÃO */
+.hero-art {
+min-height: 300px;
+display: grid;
+place-items: center;
+}
+
+.orbit {
+width: 260px;
+height: 260px;
+border: 1px solid rgba(169,234,255,.35);
+border-radius: 50%;
+display: grid;
+place-items: center;
+position: relative;
+box-shadow: 0 0 70px rgba(67,198,232,.12);
+}
+
+.brain {
+width: 105px;
+height: 105px;
+border-radius: 30px;
+display: grid;
+place-items: center;
+font-size: 48px;
+background: linear-gradient(145deg,#a9eaff,#43c6e8);
+color: var(--navy);
+}
+
+.orbit-dot {
+position: absolute;
+width: 13px;
+height: 13px;
+border-radius: 50%;
+background: var(--cyan);
+box-shadow: 0 0 18px var(--cyan);
+}
+
+.dot-one {
+top: 28px;
+right: 48px;
+}
+
+.dot-two {
+bottom: 35px;
+left: 28px;
+}
+
+/* CONTEÚDO */
+main {
+max-width: 1160px;
+margin: auto;
+padding: 0 24px 80px;
+}
+
+section {
+padding-top: 78px;
+}
+
+.section-head {
+max-width: 690px;
+margin-bottom: 28px;
+}
+
+.kicker {
+color: var(--blue2);
+font-size: 12px;
+font-weight: 900;
+letter-spacing: 1.4px;
+}
+
+h2 {
+color: var(--navy);
+font-size: clamp(27px,3vw,37px);
+margin: 8px 0 10px;
+}
+
+.section-head p {
+color: var(--muted);
+}
+
+.intro-grid {
+display: grid;
+grid-template-columns: 1.15fr .85fr;
+gap: 22px;
+}
+
+.panel,
+.info-card,
+.quiz,
+.flow-card {
+background: white;
+border: 1px solid var(--line);
+border-radius: 19px;
+box-shadow: 0 18px 45px rgba(7,27,58,.08);
+}
+
+.panel {
+padding: 29px;
+}
+
+.panel h3 {
+color: var(--navy);
+margin-bottom: 10px;
+}
+
+.panel p {
+color: var(--muted);
+}
+
+.quote {
+margin-top: 20px;
+padding: 16px;
+border-left: 4px solid var(--cyan);
+background: var(--ice);
+color: var(--blue);
+font-weight: bold;
+}
+
+.stat-panel {
+padding: 27px;
+border-radius: 19px;
+color: white;
+background: linear-gradient(145deg,#0b3d78,#1264b5);
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.stat-panel .big {
+color: var(--cyan);
+font-size: 48px;
+font-weight: 900;
+}
+
+.stat-panel p {
+color: #d8eaff;
+margin-top: 12px;
+}
+
+/* CARDS */
+.cards {
+display: grid;
+grid-template-columns: repeat(3,1fr);
+gap: 18px;
+}
+
+.info-card {
+padding: 24px;
+box-shadow: 0 10px 30px rgba(7,27,58,.06);
+transition: .2s;
+}
+
+.info-card:hover {
+transform: translateY(-4px);
+}
+
+.card-icon {
+width: 48px;
+height: 48px;
+display: grid;
+place-items: center;
+background: var(--ice);
+color: var(--blue2);
+border-radius: 14px;
+font-size: 23px;
+margin-bottom: 17px;
+}
+
+.info-card h3 {
+color: var(--navy);
+margin-bottom: 7px;
+}
+
+.info-card p {
+color: var(--muted);
+font-size: 14px;
+}
+
+/* BENEFÍCIOS E CUIDADOS */
+.two-col {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+}
+
+.list-panel {
+padding: 26px;
+border-radius: 18px;
+background: white;
+border: 1px solid var(--line);
+}
+
+.list-panel h3 {
+color: var(--navy);
+margin-bottom: 15px;
+}
+
+.list-panel ul {
+list-style: none;
+display: grid;
+gap: 12px;
+}
+
+.list-panel li {
+display: flex;
+gap: 10px;
+color: var(--muted);
+font-size: 14px;
+}
+
+.check {
+color: #0b9b83;
+font-weight: 900;
+}
+
+.alert {
+color: #d18a16;
+font-weight: 900;
+}
+
+/* INTERAÇÃO */
+.interactive {
+padding: 30px;
+color: white;
+border-radius: 22px;
+background: linear-gradient(120deg,#071b3a,#0b3d78,#1264b5);
+display: grid;
+grid-template-columns: 1fr auto;
+align-items: center;
+gap: 25px;
+}
+
+.interactive h3 {
+font-size: 22px;
+margin-bottom: 6px;
+}
+
+.interactive p {
+color: #d8eaff;
+}
+
+#suggestion {
+margin-top: 16px;
+padding: 13px 16px;
+min-height: 50px;
+border-radius: 12px;
+background: rgba(255,255,255,.1);
+color: #eaf8ff;
+}
+
+/* QUIZ */
+.quiz {
+padding: 28px;
+}
+
+.quiz-question {
+color: var(--navy);
+font-weight: 800;
+font-size: 18px;
+margin-bottom: 15px;
+}
+
+.answers {
+display: grid;
+gap: 10px;
+}
+
+.answer {
+width: 100%;
+text-align: left;
+border: 1px solid var(--line);
+background: #f8fbff;
+color: var(--text);
+padding: 13px 15px;
+border-radius: 11px;
+cursor: pointer;
+font: inherit;
+}
+
+.answer:hover {
+border-color: var(--blue2);
+background: var(--ice);
+}
+
+#quiz-feedback {
+margin-top: 14px;
+font-weight: bold;
+color: var(--blue2);
+min-height: 26px;
+}
+
+/* FLUXOGRAMA */
+.flow-card {
+padding: 28px;
+}
+
+.flowchart {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 8px;
+}
+
+.flow-node {
+width: min(100%,420px);
+text-align: center;
+padding: 13px 18px;
+border: 1px solid #b9d8f2;
+background: #f1f8ff;
+color: var(--blue);
+border-radius: 12px;
+font-weight: bold;
+}
+
+.flow-node.start {
+color: white;
+background: var(--blue);
+border-radius: 99px;
+}
+
+.flow-node.end {
+color: var(--navy);
+background: #bcefff;
+border-radius: 99px;
+}
+
+.arrow {
+color: var(--blue2);
+font-size: 22px;
+}
+
+.branches {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 18px;
+width: min(100%,620px);
+}
+
+.branch {
+text-align: center;
+}
+
+.branch-label {
+color: var(--muted);
+font-size: 12px;
+font-weight: 900;
+margin-bottom: 6px;
+}
+
+/* RODAPÉ */
+.footer {
+background: var(--navy);
+color: #d8eaff;
+padding: 30px 24px;
+text-align: center;
+}
+
+.footer strong {
+color: var(--cyan);
+}
+
+.footer small {
+display: block;
+color: #9eb9d5;
+margin-top: 6px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width:760px) {
+.nav {
+flex-direction: column;
+gap: 12px;
+}
+
+.nav-links {
+gap: 14px;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.hero-inner,
+.intro-grid,
+.two-col,
+.interactive {
+grid-template-columns: 1fr;
+}
+
+.hero-inner {
+padding: 65px 22px 70px;
+gap: 15px;
+}
+
+.cards {
+grid-template-columns: 1fr;
+}
+
+section {
+padding-top: 58px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+<nav class="nav">
+<a class="brand" href="#inicio">
+<span class="brand-mark">✦</span>
+<span>IA NA ESCOLA</span>
+</a>
+
+<div class="nav-links">
+<a href="#sobre">Sobre</a>
+<a href="#possibilidades">Possibilidades</a>
+<a href="#cuidados">Cuidados</a>
+<a href="#interacao">Interação</a>
+<a href="#fluxograma">Fluxograma</a>
+</div>
+</nav>
+</header>
+
+<header class="hero" id="inicio">
+<div class="hero-inner">
+<div>
+<span class="eyebrow">✦ Tecnologia com consciência</span>
+
+<h1>
+Inteligência Artificial
+<span>na Escola</span>
+</h1>
+
+<p>
+Como a tecnologia pode apoiar a aprendizagem,
+estimular a criatividade e transformar a educação
+sem substituir o pensamento dos estudantes.
+</p>
+
+<div class="hero-actions">
+<a class="btn btn-primary" href="#sobre">
+Conheça o projeto →
+</a>
+
+<a class="btn btn-outline" href="#interacao">
+Experimentar interação
+</a>
+</div>
+</div>
+
+<div class="hero-art">
+<div class="orbit">
+<span class="orbit-dot dot-one"></span>
+<span class="orbit-dot dot-two"></span>
+<div class="brain">✧</div>
+</div>
+</div>
+</div>
+</header>
+
+<main>
+
+<section id="sobre">
+<div class="section-head">
+<span class="kicker">01 · ENTENDA O TEMA</span>
+<h2>O que é Inteligência Artificial?</h2>
+<p>
+Uma tecnologia que já faz parte do nosso dia a dia
+e pode ser uma aliada no ambiente escolar.
+</p>
+</div>
+
+<div class="intro-grid">
+<article class="panel">
+<h3>Aprender com novas possibilidades</h3>
+
+<p>
+A Inteligência Artificial (IA) é uma área da
+tecnologia que desenvolve sistemas capazes de
+realizar tarefas que normalmente exigem habilidades
+humanas, como reconhecer padrões, organizar
+informações e responder perguntas.
+</p>
+
+<p style="margin-top:12px">
+Na escola, ela pode ajudar a explicar conteúdos,
+sugerir ideias, apoiar pesquisas e oferecer
+diferentes formas de estudar. Mesmo assim, é
+importante conferir as informações e construir
+nossas próprias respostas.
+</p>
+
+<div class="quote">
+A IA pode ajudar no caminho, mas aprender continua
+sendo uma construção do estudante.
+</div>
+</article>
+
+<aside class="stat-panel">
+<div class="big">IA +</div>
+<h3>Aprendizagem humana</h3>
+<p>
+O melhor resultado acontece quando usamos a
+tecnologia com curiosidade, responsabilidade
+e pensamento crítico.
+</p>
+</aside>
+</div>
+</section>
+
+<section id="possibilidades">
+<div class="section-head">
+<span class="kicker">02 · O LADO POSITIVO</span>
+<h2>Como a IA pode ajudar na escola?</h2>
+<p>
+Quando utilizada de maneira consciente, ela pode
+apoiar diferentes etapas do aprendizado.
+</p>
+</div>
+
+<div class="cards">
+<article class="info-card">
+<div class="card-icon">📚</div>
+<h3>Explicação de conteúdos</h3>
+<p>
+Pode apresentar um assunto de outras maneiras
+e ajudar o estudante a compreender temas difíceis.
+</p>
+</article>
+
+<article class="info-card">
+<div class="card-icon">💡</div>
+<h3>Novas ideias</h3>
+<p>
+Pode sugerir temas, exemplos e caminhos para
+desenvolver trabalhos e projetos criativos.
+</p>
+</article>
+
+<article class="info-card">
+<div class="card-icon">⏱️</div>
+<h3>Organização dos estudos</h3>
+<p>
+Pode ajudar a montar revisões, organizar tarefas
+e criar um planejamento de estudos.
+</p>
+</article>
+</div>
+</section>
+
+<section id="cuidados">
+<div class="section-head">
+<span class="kicker">03 · USO RESPONSÁVEL</span>
+<h2>Benefícios e cuidados</h2>
+<p>
+Usar a IA não significa aceitar tudo o que ela
+apresenta. É necessário avaliar as respostas.
+</p>
+</div>
+
+<div class="two-col">
+<article class="list-panel">
+<h3>✓ Boas possibilidades</h3>
+<ul>
+<li><span class="check">✓</span> Revisar conteúdos e tirar dúvidas.</li>
+<li><span class="check">✓</span> Ter ideias para começar um projeto.</li>
+<li><span class="check">✓</span> Adaptar explicações ao ritmo de aprendizagem.</li>
+<li><span class="check">✓</span> Desenvolver criatividade e autonomia.</li>
+</ul>
+</article>
+
+<article class="list-panel">
+<h3>! Pontos de atenção</h3>
+<ul>
+<li><span class="alert">!</span> Conferir se as informações estão corretas.</li>
+<li><span class="alert">!</span> Não copiar respostas sem compreender.</li>
+<li><span class="alert">!</span> Não compartilhar dados pessoais.</li>
+<li><span class="alert">!</span> Respeitar as orientações dos professores.</li>
+</ul>
+</article>
+</div>
+</section>
+
+<section id="interacao">
+<div class="section-head">
+<span class="kicker">04 · EXPERIMENTE</span>
+<h2>Aprender também é explorar</h2>
+<p>
+Use os recursos abaixo para conhecer formas
+conscientes de aproveitar a tecnologia.
+</p>
+</div>
+
+<div class="interactive">
+<div>
+<h3>Uma dica para seus estudos</h3>
+<p>
+Clique no botão e receba uma sugestão aleatória
+de como usar a IA de maneira responsável.
+</p>
+
+<div id="suggestion">
+Sua próxima ideia de estudo aparecerá aqui.
+</div>
+</div>
+
+<button class="btn btn-primary" id="tip-button">
+Gerar uma dica ✦
+</button>
+</div>
+
+<br>
+
+<div class="quiz">
+<div class="quiz-question">
+Desafio rápido: qual é a melhor atitude ao receber
+uma resposta de uma ferramenta de IA?
+</div>
+
+<div class="answers">
+<button class="answer" data-correct="false">
+A) Copiar a resposta sem ler.
+</button>
+
+<button class="answer" data-correct="true">
+B) Conferir as informações e entender o conteúdo.
+</button>
+
+<button class="answer" data-correct="false">
+C) Acreditar em tudo sem questionar.
+</button>
+</div>
+
+<div id="quiz-feedback"></div>
+</div>
+</section>
+
+<section id="fluxograma">
+<div class="section-head">
+<span class="kicker">05 · LÓGICA E TECNOLOGIA</span>
+<h2>Fluxograma: usando IA com responsabilidade</h2>
+<p>
+Um exemplo simples de como pensar antes de utilizar
+uma ferramenta de Inteligência Artificial.
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flowchart">
+
+<div class="flow-node start">
+Início: tenho uma dúvida escolar
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="flow-node">
+Uso a IA para buscar uma explicação
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="flow-node">
+A informação faz sentido e pode ser conferida?
+</div>
+
+<div class="branches">
+<div class="branch">
+<div class="arrow">↓</div>
+<div class="branch-label">SIM</div>
+<div class="flow-node">
+Comparo fontes e estudo a explicação
+</div>
+</div>
+
+<div class="branch">
+<div class="arrow">↓</div>
+<div class="branch-label">NÃO</div>
+<div class="flow-node">
+Pesquiso melhor e peço orientação
+</div>
+</div>
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="flow-node end">
+Fim: aprendo e uso a tecnologia com consciência
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="section-head">
+<span class="kicker">06 · CONCLUSÃO</span>
+<h2>O futuro da educação também depende de nós</h2>
+<p>
+A Inteligência Artificial oferece novas oportunidades
+para a educação, mas seu uso precisa ser equilibrado.
+Ela deve servir como uma ferramenta de apoio, sem
+substituir a criatividade, a participação e o esforço
+dos estudantes. Com responsabilidade e pensamento
+crítico, podemos aproveitar a tecnologia para aprender
+cada vez mais.
+</p>
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+<strong>IA NA ESCOLA</strong>
+<p>
+Conhecimento, criatividade e responsabilidade
+na era digital.
+</p>
+<small>Projeto educativo · Técnicas Computacionais</small>
+</footer>
+
+<script type="module">
+
+// Módulo com export e import.
+const moduleCode = `
+export const dicas = [
+"Peça à IA para explicar um assunto com exemplos e depois tente explicá-lo com suas próprias palavras.",
+"Use a IA para criar perguntas de revisão e responda sem consultar as respostas.",
+"Compare a explicação da IA com o material indicado pelo professor.",
+"Peça ideias para organizar seu trabalho, mas desenvolva o conteúdo com suas próprias palavras.",
+"Quando uma resposta parecer estranha, pesquise em outras fontes confiáveis."
+];
+
+export function sortearDica(lista) {
+const indice = Math.floor(Math.random() * lista.length);
+return lista[indice];
+}
+`;
+
+const moduleUrl = URL.createObjectURL(
+new Blob([moduleCode], {type: "text/javascript"})
+);
+
+const { dicas, sortearDica } = await import(moduleUrl);
+
+URL.revokeObjectURL(moduleUrl);
+
+// Botão que gera dicas aleatórias.
+const tipButton = document.getElementById("tip-button");
+const suggestion = document.getElementById("suggestion");
+
+tipButton.addEventListener("click", () => {
+
+if (dicas.length > 0) {
+suggestion.textContent = sortearDica(dicas);
+} else {
+suggestion.textContent =
+"Não há dicas disponíveis no momento.";
+}
+
+});
+
+// Quiz interativo.
+const answerButtons = document.querySelectorAll(".answer");
+const feedback = document.getElementById("quiz-feedback");
+
+// for...of percorre todas as alternativas.
+for (const button of answerButtons) {
+
+button.addEventListener("click", () => {
+
+// replace remove espaços extras.
+const resposta = button.textContent
+.replace(/\s+/g, " ")
+.trim();
+
+// if/else verifica se a resposta está correta.
+if (button.dataset.correct === "true") {
+
+feedback.textContent =
+"Muito bem! A resposta correta é conferir e compreender as informações. ✓";
+
+} else {
+
+feedback.textContent =
+"Ainda não! Pense na importância de verificar as informações antes de utilizá-las.";
+
+}
+
+console.log("Resposta selecionada:", resposta);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
